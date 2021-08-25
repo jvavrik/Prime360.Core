@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prime360.Core", "Prime360.Core\Prime360.Core.csproj", "{A2B12F80-6ECD-4869-9D39-FB1540614F91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prime360.Core.Tests", "Prime360.Core.Tests\Prime360.Core.Tests.csproj", "{893BDF69-38A8-4246-AC25-10DE41FE8429}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2B12F80-6ECD-4869-9D39-FB1540614F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2B12F80-6ECD-4869-9D39-FB1540614F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2B12F80-6ECD-4869-9D39-FB1540614F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2B12F80-6ECD-4869-9D39-FB1540614F91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{893BDF69-38A8-4246-AC25-10DE41FE8429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{893BDF69-38A8-4246-AC25-10DE41FE8429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{893BDF69-38A8-4246-AC25-10DE41FE8429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{893BDF69-38A8-4246-AC25-10DE41FE8429}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4E9C1DB-FBBA-4002-B23B-26D530304F99}
+	EndGlobalSection
+EndGlobal
