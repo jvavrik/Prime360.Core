@@ -33,14 +33,15 @@ namespace Prime360.Core.Business
 
         public static List<DateTime> GenerateMonthlySchedule(DateTime startDate, DateTime lastPossibleDate)
         {
+            if (lastPossibleDate < startDate)
+            {
+                throw new ArgumentException("The last possible date cannot be less than the start date");
+            }
+
             var schedule = new List<DateTime>();
             DateTime currentDate = startDate;
             int monthlyDay = startDate.Day;
-            //july -> 31
-            //aug -> 31
-            //sept -> 30
-            //oct -> 31
-            
+
             while (currentDate <= lastPossibleDate)
             {
                 schedule.Add(currentDate);
@@ -49,6 +50,49 @@ namespace Prime360.Core.Business
                 {
                     currentDate = new DateTime(currentDate.Year, currentDate.Month, monthlyDay);
                 }
+            }
+
+            return schedule;
+        }
+        public static List<DateTime> GenerateBiMonthlySchedule(DateTime startDate, DateTime secondDate, DateTime lastPossibleDate)
+        {
+            if (lastPossibleDate < startDate || lastPossibleDate < secondDate)
+            {
+                throw new ArgumentException("The last possible date cannot be less than the start date or second date");
+            }
+            if (secondDate < startDate)
+            {
+                throw new ArgumentException("The second date cannot be less than the start date");
+            }
+
+            var schedule = new List<DateTime>();
+            DateTime currentDate = startDate;
+            int firstDay = startDate.Day;
+            int secondDay = secondDate.Day;
+            //first -> 8/20
+            //second-> 9/2
+            while (currentDate <= lastPossibleDate)
+            {
+
+                if (firstDay < secondDay)
+                {
+                    schedule.Add(currentDate);
+                    currentDate = new DateTime(currentDate.Year, currentDate.Month, secondDay);
+                    schedule.Add(currentDate);
+                    currentDate = new DateTime(currentDate.Year, currentDate.Month + 1, firstDay);
+                }
+                else
+                {
+                    schedule.Add(currentDate);
+                    currentDate = new DateTime(currentDate.Year, currentDate.Month + 1, secondDay);
+                    if (currentDate <= lastPossibleDate)
+                    {
+                        schedule.Add(currentDate);
+                        currentDate = new DateTime(currentDate.Year, currentDate.Month, firstDay);
+                    }
+                }
+
+
             }
 
             return schedule;
@@ -65,5 +109,6 @@ namespace Prime360.Core.Business
             }
             return schedule;
         }
+
     }
 }

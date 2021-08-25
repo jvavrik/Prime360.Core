@@ -74,5 +74,24 @@ namespace Prime360.Core.Tests.UnitTests
             Assert.Equal(new DateTime(2020, 8, 30), schedule[schedule.Count - 1]);
         }
 
+        [Fact]
+        public void BiMonthlySchedule_GivenTwoStartDates_WhereFirstDateIsLessThanSecondInTheSameMonth_ABiMonthlyScheduleIsCreatedNotPassingLastPossibleDate()
+        {
+            var schedule = ScheduleGeneration.GenerateBiMonthlySchedule(new DateTime(2020, 3, 1), new DateTime(2020, 3, 15), new DateTime(2020, 9, 15));
+
+            Assert.Equal(14, schedule.Count);
+            Assert.Equal(new DateTime(2020, 9, 15), schedule[schedule.Count - 1]);
+        }
+
+        [Fact]
+        public void BiMonthlySchedule_GivenTwoStartDates_WhereSecondDateIsLessThanFirstInTheNextMonth_ABiMonthlyScheduleIsCreatedNotPassingLastPossibleDate()
+        {
+            var schedule = ScheduleGeneration.GenerateBiMonthlySchedule(new DateTime(2020, 3, 15), new DateTime(2020, 4, 1), new DateTime(2020, 9, 15));
+
+            Assert.Equal(13, schedule.Count);
+            Assert.Equal(new DateTime(2020, 9, 15), schedule[schedule.Count - 1]);
+        }
+
+
     }
 }
