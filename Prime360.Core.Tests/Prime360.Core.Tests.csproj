@@ -19,4 +19,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Prime360.Core\Prime360.Core.csproj" />
+  </ItemGroup>
+
 </Project>
