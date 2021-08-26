@@ -1,6 +1,6 @@
 # Prime360.Core README
 
-Creating an open source LMS from the ground up.
+Creating an open source LMS from the ground up in baby steps.
 
 
 ## Features
