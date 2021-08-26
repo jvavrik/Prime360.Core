@@ -55,7 +55,7 @@ namespace Prime360.Core.Business
             return schedule;
         }
 
-        public static List<DateTime> GenerateBiMonthlySchedule(DateTime startDate, DateTime secondDate, DateTime lastPossibleDate)
+        public static List<DateTime> GenerateSemiMonthlySchedule(DateTime startDate, DateTime secondDate, DateTime lastPossibleDate)
         {
             if (lastPossibleDate < startDate || lastPossibleDate < secondDate)
             {
