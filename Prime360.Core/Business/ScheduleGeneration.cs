@@ -54,6 +54,7 @@ namespace Prime360.Core.Business
 
             return schedule;
         }
+
         public static List<DateTime> GenerateBiMonthlySchedule(DateTime startDate, DateTime secondDate, DateTime lastPossibleDate)
         {
             if (lastPossibleDate < startDate || lastPossibleDate < secondDate)
@@ -69,8 +70,7 @@ namespace Prime360.Core.Business
             DateTime currentDate = startDate;
             int firstDay = startDate.Day;
             int secondDay = secondDate.Day;
-            //first -> 8/20
-            //second-> 9/2
+            
             while (currentDate <= lastPossibleDate)
             {
 

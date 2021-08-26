@@ -30,6 +30,7 @@ namespace Prime360.Core.Tests.UnitTests
             Assert.Equal(11, schedule.Count);
             Assert.Equal(new DateTime(2020, 8, 3), schedule[schedule.Count - 1]);
         }
+
         [Fact]
         public void BiWeeklySchedule_GivenAStartDate_AnErrorIsThrownIfLastPossibleDateIsBeforeStartDate()
         {
@@ -75,6 +76,14 @@ namespace Prime360.Core.Tests.UnitTests
         }
 
         [Fact]
+        public void MonthlySchedule_GivenAStartDate_AnErrorIsThrownIfLastPossibleDateIsBeforeStartDate()
+        {
+            var scheduleException = Assert.Throws<ArgumentException>(() => ScheduleGeneration.GenerateMonthlySchedule(new DateTime(2020, 3, 16), new DateTime(2019, 8, 16)));
+
+            Assert.Equal("The last possible date cannot be less than the start date", scheduleException.Message);
+        }
+
+        [Fact]
         public void BiMonthlySchedule_GivenTwoStartDates_WhereFirstDateIsLessThanSecondInTheSameMonth_ABiMonthlyScheduleIsCreatedNotPassingLastPossibleDate()
         {
             var schedule = ScheduleGeneration.GenerateBiMonthlySchedule(new DateTime(2020, 3, 1), new DateTime(2020, 3, 15), new DateTime(2020, 9, 15));
@@ -91,6 +100,31 @@ namespace Prime360.Core.Tests.UnitTests
             Assert.Equal(13, schedule.Count);
             Assert.Equal(new DateTime(2020, 9, 15), schedule[schedule.Count - 1]);
         }
+
+        [Fact]
+        public void BiMonthlySchedule_GivenAStartDate_AnErrorIsThrownIfLastPossibleDateIsBeforeStartDate()
+        {
+            var scheduleException = Assert.Throws<ArgumentException>(() => ScheduleGeneration.GenerateBiMonthlySchedule(new DateTime(2020, 3, 16), new DateTime(2020, 4, 1), new DateTime(2019, 8, 16)));
+
+            Assert.Equal("The last possible date cannot be less than the start date or second date", scheduleException.Message);
+        }
+
+        [Fact]
+        public void BiMonthlySchedule_GivenAStartDate_AnErrorIsThrownIfLastPossibleDateIsBeforeSecondDate()
+        {
+            var scheduleException = Assert.Throws<ArgumentException>(() => ScheduleGeneration.GenerateBiMonthlySchedule(new DateTime(2020, 3, 16), new DateTime(2020, 4, 1), new DateTime(2020, 3, 20)));
+
+            Assert.Equal("The last possible date cannot be less than the start date or second date", scheduleException.Message);
+        }
+
+        [Fact]
+        public void BiMonthlySchedule_GivenAStartDate_AnErrorIsThrownIfSecondDateIsBeforeFirstDate()
+        {
+            var scheduleException = Assert.Throws<ArgumentException>(() => ScheduleGeneration.GenerateBiMonthlySchedule(new DateTime(2020, 3, 16), new DateTime(2020, 3, 1), new DateTime(2021, 3, 20)));
+
+            Assert.Equal("The second date cannot be less than the start date", scheduleException.Message);
+        }
+
 
 
     }
